@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08080c">
+<title>SHADOWS GAMING | Free Fire</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --red: #ff1733;
+  --black: #08080c;
+  --panel: #14141b;
+  --white: #f5f5f7;
+  --gray: #a2a2ad;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,8,12,.94);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #ffffff15;
+}
+
+nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  font-size: 17px;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 800;
+  transition: .2s;
+}
+
+.nav-links a:hover {
+  color: var(--red);
+}
+
+.menu-btn {
+  display: none;
+  padding: 10px 13px;
+  color: white;
+  background: #15151b;
+  border: 1px solid #ffffff25;
+  border-radius: 7px;
+}
+
+/* =========================
+   PORTADA
+========================= */
+
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(ellipse at 80% 40%, #ff17331c, transparent 45%),
+    repeating-linear-gradient(
+      125deg,
+      transparent 0 115px,
+      #ff173308 116px 119px,
+      transparent 120px 230px
+    );
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  right: -180px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, #ff17331c, transparent 65%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("assets/logo.png") center/contain no-repeat;
+  opacity: .08;
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  padding: 80px 0;
+  max-width: 570px;
+}
+
+.label {
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-family: 'Barlow Condensed', Impact, sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(65px, 11vw, 125px);
+  line-height: .9;
+  margin: 25px 0;
+  letter-spacing: -3px;
+}
+
+h1 span {
+  display: block;
+  color: var(--red);
+}
+
+.hero p {
+  max-width: 570px;
+  color: #b9b9c3;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 21px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 900;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-red {
+  background: var(--red);
+  color: white;
+  box-shadow: 0 8px 25px #ff17332b;
+}
+
+.btn-outline {
+  border: 1px solid #ffffff35;
+  background: #ffffff05;
+}
+
+/* JUGADORES DE LA PORTADA */
+
+.hero-players {
+  position: absolute;
+  right: -30px;
+  bottom: 0;
+  width: 650px;
+  height: 610px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-players img {
+  position: absolute;
+  bottom: 0;
+  width: 330px;
+  height: 560px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter:
+    drop-shadow(0 0 20px #ff173340)
+    drop-shadow(0 20px 35px #000);
+  transition: .3s;
+}
+
+/* RIUK */
+
+.hero-players img:nth-child(1) {
+  right: 310px;
+  z-index: 1;
+  transform: scale(.88);
+}
+
+/* DHZIN */
+
+.hero-players img:nth-child(2) {
+  right: 190px;
+  z-index: 3;
+  transform: scale(1);
+}
+
+/* RILOXXZ */
+
+.hero-players img:nth-child(3) {
+  right: 75px;
+  z-index: 2;
+  transform: scale(.94);
+}
+
+/* RYKER */
+
+.hero-players img:nth-child(4) {
+  right: -35px;
+  z-index: 4;
+  transform: scale(.9);
+}
+
+.hero-players::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--red),
+    transparent
+  );
+  box-shadow: 0 0 25px var(--red);
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+section.content {
+  padding: 85px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-heading h2 {
+  font-size: clamp(42px, 6vw, 65px);
+  margin: 12px 0;
+}
+
+.section-heading p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================
+   JUGADORES
+========================= */
+
+.roster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.player {
+  position: relative;
+  background: linear-gradient(145deg, #191920, #0e0e13);
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  padding: 18px;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.player:hover {
+  transform: translateY(-5px);
+  border-color: #ff173380;
+  box-shadow: 0 15px 35px #0007;
+}
+
+.player::before {
+  content: attr(data-number);
+  position: absolute;
+  top: 48px;
+  right: 12px;
+  font: 900 85px 'Barlow Condensed', sans-serif;
+  color: #ffffff08;
+}
+
+.player-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player-number {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.flag {
+  font-size: 25px;
+}
+
+.photo {
+  height: 300px;
+  margin: 15px 0;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(ellipse at center, #292932, #0a0a0e);
+
+  border: 1px solid #ffffff0c;
+}
+
+.photo img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  z-index: 2;
+}
+
+.photo .initial {
+  color: var(--red);
+  font: 900 100px 'Barlow Condensed', sans-serif;
+}
+
+.country {
+  font-size: 12px;
+  color: var(--gray);
+  margin-bottom: 5px;
+}
+
+.player h3 {
+  font-size: 33px;
+  overflow-wrap: anywhere;
+}
+
+.role {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 11px;
+  color: #ff8c99;
+  background: #ff17331c;
+  border-left: 3px solid var(--red);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.stat {
+  background: #08080c;
+  border: 1px solid #ffffff12;
+  border-radius: 7px;
+  padding: 13px 10px;
+}
+
+.stat strong {
+  display: block;
+  font: 800 24px 'Barlow Condensed', sans-serif;
+}
+
+.stat span {
+  color: var(--gray);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.player-footer {
+  border-top: 1px solid #ffffff13;
+  margin-top: 15px;
+  padding-top: 13px;
+  color: #9999a4;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   IDENTIDAD
+========================= */
+
+.identity {
+  padding: 45px 30px;
+
+  background:
+    linear-gradient(110deg, #ff17331b, transparent 70%),
+    var(--panel);
+
+  border: 1px solid #ff17332b;
+  border-radius: 13px;
+}
+
+.identity h2 {
+  font-size: clamp(38px, 6vw, 62px);
+  margin: 15px 0;
+}
+
+.identity p {
+  max-width: 650px;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* =========================
+   TORNEOS
+========================= */
+
+.tournaments {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.tournament {
+  padding: 25px;
+  background: var(--panel);
+  border: 1px solid #ffffff15;
+  border-radius: 10px;
+}
+
+.tournament h3 {
+  font-size: 30px;
+  margin: 20px 0 10px;
+}
+
+.tournament p {
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.tag {
+  color: #ff8793;
+  background: #ff17331b;
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   PIE
+========================= */
+
+footer {
+  border-top: 1px solid #ffffff15;
+  padding: 25px 0;
+  color: #888894;
+  font-size: 12px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+footer strong {
+  color: white;
+}
+
+footer strong span {
+  color: var(--red);
+}
+
+/* =========================
+   CELULARES
+========================= */
+
+@media (max-width: 1000px) {
+
+  .hero-players {
+    right: -160px;
+    opacity: .75;
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 850px) {
+
+  .roster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    min-height: 620px;
+  }
+
+  .hero .container {
+    min-height: 620px;
+  }
+
+  .hero-players {
+    right: -260px;
+    opacity: .4;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    padding: 18px 5%;
+    background: #0b0b10;
+    border-bottom: 1px solid #ffffff20;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .hero {
+    min-height: 570px;
+  }
+
+  .hero .container {
+    min-height: 570px;
+  }
+
+  .hero-content {
+    padding: 65px 0;
+    z-index: 5;
+  }
+
+  h1 {
+    font-size: 70px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-players {
+    width: 500px;
+    height: 500px;
+    right: -250px;
+    opacity: .25;
+  }
+
+  section.content {
+    padding: 65px 0;
+  }
+
+  .roster,
+  .tournaments {
+    grid-template-columns: 1fr;
+  }
+
+  .photo {
+    height: 350px;
+  }
+
+  .buttons .btn {
+    width: 100%;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+
+    <a class="logo" href="#inicio">
+      <img src="./logo.png" alt="Logo de Shadows Gaming">
+      <div>
+        SHADOWS <span>GAMING</span>
+      </div>
+    </a>
+
+    <button class="menu-btn" id="menuBtn"
+      aria-expanded="false">
+      ☰ Menú
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#inicio">INICIO</a>
+      <a href="#equipo">JUGADORES</a>
+      <a href="#torneos">TORNEOS</a>
+    </div>
+
+  </nav>
+</header>
+
+<main>
+
+<!-- =========================
+     PORTADA
+========================= -->
+
+<section class="hero" id="inicio">
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="label">
+        FREE FIRE · COMPETITIVO
+      </div>
+
+      <h1>
+        <span>SHADOWS</span>
+      </h1>
+
+      <p>
+        Un equipo. Una mentalidad. Un objetivo:
+        competir al máximo nivel. Conocé a los jugadores
+        que representan a SHADOWS GAMING.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#equipo" class="btn btn-red">
+          CONOCÉ EL EQUIPO ↘
+        </a>
+
+        <a href="#torneos" class="btn btn-outline">
+          VER TORNEOS
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- JUGADORES DE LA PORTADA -->
+
+    <div class="hero-players">
+
+      <img src="assets/players/riuk.png"
+           alt="SG.Riuk">
+
+      <img src="assets/players/dhzin.png"
+           alt="SG.Dhzin">
+
+      <img src="assets/players/riloxzz.png"
+           alt="SG.Riloxzz">
+
+      <img src="assets/players/ryker.jpg"
+           alt="SG.Ryker">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     JUGADORES
+========================= -->
+
+<section class="content" id="equipo">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="label">
+        LA ESCUADRA
+      </div>
+
+      <h2>
+        NUESTROS JUGADORES
+      </h2>
+
+      <p>
+        Conocé a los integrantes de SHADOWS GAMING,
+        sus roles y sus estadísticas.
+      </p>
+
+    </div>
+
+
+    <div class="roster">
+
+
+      <!-- JUGADOR 01 -->
+
+      <article class="player" data-number="01">
+
+        <div class="player-top">
+
+          <span class="player-number">
+            JUGADOR 01
+          </span>
+
+          <span class="flag">
+            🇦🇷
+          </span>
+
+        </div>
+
+        <div class="photo">
+
+          <span class="initial">
+            
+          </span>
+
+          <img src="./riuk.png"
+               alt="Foto de SG.Riuk"
+               onerror="this.style.display='none'">
+
+        </div>
+
+        <div class="country">
+          🇦🇷 ARGENTINA
+        </div>
+
+        <h3>
+          SG.Riuk
+        </h3>
+
+        <span class="role">
+          RUSHER
+        </span>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Kills</span>
+          </div>
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Mapas jugados</span>
+          </div>
+
+        </div>
+
+        <div class="player-footer">
+          SHADOWS GAMING · SG
+        </div>
+
+      </article>
+
+
+      <!-- JUGADOR 02 -->
+
+      <article class="player" data-number="02">
+
+        <div class="player-top">
+
+          <span class="player-number">
+            JUGADOR 02
+          </span>
+
+          <span class="flag">
+            🇦🇷
+          </span>
+
+        </div>
+
+        <div class="photo">
+
+          <span class="initial">
+            
+          </span>
+
+          <img src="./dhzin.png"
+               alt="Foto de SG.Dhzin"
+               onerror="this.style.display='none'">
+
+        </div>
+
+        <div class="country">
+          🇦🇷 ARGENTINA
+        </div>
+
+        <h3>
+          SG.Dhzin
+        </h3>
+
+        <span class="role">
+          RUSHER
+        </span>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Kills</span>
+          </div>
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Mapas jugados</span>
+          </div>
+
+        </div>
+
+        <div class="player-footer">
+          SHADOWS GAMING · SG
+        </div>
+
+      </article>
+
+
+      <!-- JUGADOR 03 -->
+
+      <article class="player" data-number="03">
+
+        <div class="player-top">
+
+          <span class="player-number">
+            JUGADOR 03
+          </span>
+
+          <span class="flag">
+            🇵🇪
+          </span>
+
+        </div>
+
+        <div class="photo">
+
+          <span class="initial">
+            
+          </span>
+
+          <img src="./riloxzz.png"
+               alt="Foto de SG.Riloxzz"
+               onerror="this.style.display='none'">
+
+        </div>
+
+        <div class="country">
+          🇵🇪 PERÚ
+        </div>
+
+        <h3>
+          SG.Riloxzz
+        </h3>
+
+        <span class="role">
+          RUSHER
+        </span>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Kills</span>
+          </div>
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Mapas jugados</span>
+          </div>
+
+        </div>
+
+        <div class="player-footer">
+          SHADOWS GAMING · SG
+        </div>
+
+      </article>
+
+
+      <!-- JUGADOR 04 -->
+
+      <article class="player" data-number="04">
+
+        <div class="player-top">
+
+          <span class="player-number">
+            JUGADOR 04
+          </span>
+
+          <span class="flag">
+            🇦🇷
+          </span>
+
+        </div>
+
+        <div class="photo">
+
+          <span class="initial">
+            
+          </span>
+
+          <img src="ryker.jpg"
+               alt="Foto de SG.Ryker"
+               onerror="this.style.display='none'">
+
+        </div>
+
+        <div class="country">
+          🇦🇷 ARGENTINA
+        </div>
+
+        <h3>
+          SG.Ryker
+        </h3>
+
+        <span class="role">
+          RUSHER
+        </span>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Kills</span>
+          </div>
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Mapas jugados</span>
+          </div>
+
+        </div>
+
+        <div class="player-footer">
+          SHADOWS GAMING · SG
+        </div>
+
+      </article>
+
+
+      <!-- JUGADOR 05 -->
+
+      <article class="player" data-number="05">
+
+        <div class="player-top">
+
+          <span class="player-number">
+            JUGADOR 05
+          </span>
+
+          <span class="flag">
+            🇨🇱
+          </span>
+
+        </div>
+
+        <div class="photo">
+
+          <span class="initial">
+            J
+          </span>
+
+        </div>
+
+        <div class="country">
+          🇨🇱 CHILE
+        </div>
+
+        <h3>
+          SG.JotaGod
+        </h3>
+
+        <span class="role">
+          RUSHER
+        </span>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Kills</span>
+          </div>
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Mapas jugados</span>
+          </div>
+
+        </div>
+
+        <div class="player-footer">
+          SHADOWS GAMING · SG
+        </div>
+
+      </article>
+
+
+      <!-- JUGADOR 06 -->
+
+      <article class="player" data-number="06">
+
+        <div class="player-top">
+
+          <span class="player-number">
+            JUGADOR 06
+          </span>
+
+          <span class="flag">
+            🇦🇷
+          </span>
+
+        </div>
+
+        <div class="photo">
+
+          <span class="initial">
+            G
+          </span>
+
+        </div>
+
+        <div class="country">
+          🇦🇷 ARGENTINA
+        </div>
+
+        <h3>
+          SG.Gaspi
+        </h3>
+
+        <span class="role">
+          SOPORTE
+        </span>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Kills</span>
+          </div>
+
+          <div class="stat">
+            <strong>—</strong>
+            <span>Mapas jugados</span>
+          </div>
+
+        </div>
+
+        <div class="player-footer">
+          SHADOWS GAMING · SG
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- =========================
+     IDENTIDAD
+========================= -->
+
+<section class="content">
+
+  <div class="container">
+
+    <div class="identity">
+
+      <div class="label">
+        NUESTRA IDENTIDAD
+      </div>
+
+      <h2>
+        UNA ESCUADRA.<br>
+        UN OBJETIVO.
+      </h2>
+
+      <p>
+        Disciplina, comunicación y constancia.
+        Cada mapa cuenta. Cada jugador aporta.
+        SHADOWS GAMING compite para seguir creciendo.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TORNEOS
+========================= -->
+
+<section class="content" id="torneos">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="label">
+        CAMINO COMPETITIVO
+      </div>
+
+      <h2>
+        TORNEOS Y RESULTADOS
+      </h2>
+
+      <p>
+        Esta sección está preparada para agregar
+        los torneos y resultados oficiales del equipo.
+      </p>
+
+    </div>
+
+
+    <div class="tournaments">
+
+      <article class="tournament">
+
+        <span class="tag">
+          PRÓXIMAMENTE
+        </span>
+
+        <h3>
+          PRÓXIMO TORNEO
+        </h3>
+
+        <p>
+          El nombre y la fecha se agregarán
+          cuando estén confirmados.
+        </p>
+
+      </article>
+
+
+      <article class="tournament">
+
+        <span class="tag">
+          EN ACTUALIZACIÓN
+        </span>
+
+        <h3>
+          RESULTADOS
+        </h3>
+
+        <p>
+          Las posiciones y estadísticas se publicarán
+          cuando haya datos oficiales disponibles.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     PIE
+========================= -->
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+      <strong>
+        SHADOWS <span>GAMING</span>
+      </strong>
+      · Free Fire competitivo
+    </div>
+
+    <div>
+      © <span id="year"></span> SHADOWS GAMING
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const navLinks =
+  document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+  const abierto =
+    navLinks.classList.toggle("open");
+
+  menuBtn.setAttribute(
+    "aria-expanded",
+    abierto
+  );
+
+});
+
+navLinks.querySelectorAll("a").forEach(enlace => {
+
+  enlace.addEventListener("click", () => {
+
+    navLinks.classList.remove("open");
+
+    menuBtn.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  });
+
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
